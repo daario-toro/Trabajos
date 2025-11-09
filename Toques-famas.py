@@ -1,19 +1,19 @@
+#JUEGO Toques y Famas
+#Realizado por Catalina Ortuño y Dario Toro
+#06-11-2025
+
+
 import random
 import sys
 
-def generar_secreto():
-    """
-    Genera un número secreto de 4 dígitos **no repetidos**.
-    Devuelve una cadena como "4729".
-    """
+def generar_secreto():    #Genera un número secreto de 4 dígitos no repetidos
     digitos = list('0123456789')
     random.shuffle(digitos)
     secreto = "".join(digitos[:4])
     return secreto
 
-def calcular_toques_famas(secreto, intento):
+def calcular_toques_famas(secreto, intento): #Calcula y devuelve toquesy famas comarando intento con secreto
     """
-    Calcula y devuelve (toques, famas) comparando intento con secreto.
     - Fama: mismo dígito en la misma posición.
     - Toque: dígito presente en secreto pero en distinta posición.
     """
@@ -32,16 +32,9 @@ def calcular_toques_famas(secreto, intento):
 
     return toques, famas
 
-def validar_intento(intento):
-    """
-    Valida que:
-    - tenga exactamente 4 caracteres
-    - todos sean dígitos
-    - no tenga dígitos repetidos
-    Devuelve (es_valido, mensaje_error)
-    """
+def validar_intento(intento): #Valida intento que sean 4 dígitos no repetidos
     if intento.lower() == "salir":
-        return True, ""  # permitimos 'salir' como comando válido para abandonar
+        return True, ""  # permite la palabra 'salir' como comando para abandonar
 
     if len(intento) != 4:
         return False, "Debe ingresar exactamente 4 cifras."
@@ -52,31 +45,24 @@ def validar_intento(intento):
     return True, ""
 
 def explicar_reglas():
-    """
-    Muestra la explicación del juego antes de comenzar.
-    """
     print("===========================================")
-    print("        🧩 BIENVENIDO A TOQUES Y FAMAS 🧩")
+    print("     BIENVENIDO A TOQUES Y FAMAS ")
     print("===========================================\n")
     print("El objetivo del juego es adivinar un número secreto de 4 cifras.\n")
-    print("👉 DEFINICIONES:")
     print("- FAMA: el número y su posición son correctos.")
-    print("- TOQUE: el número está en el secreto, pero en otra posición.")
+    print("- TOQUE: el número está en el secreto, pero en otra posición.\n")
     print("Ganas cuando consigues 4 FAMAS.")
     print("Puedes escribir 'salir' en cualquier momento para abandonar el juego.\n")
     print("¡Buena suerte!\n")
     print("===========================================\n")
 
 def jugar_toques_y_famas():
-    """
-    Ciclo principal del juego. Maneja intentos, validación y reinicio.
-    """
     explicar_reglas()  # mostramos las reglas antes de iniciar
 
     while True:
         numero_secreto = generar_secreto()
         intentos = 0
-        max_intentos = None  # cambia a un número si deseas limitar los intentos
+        max_intentos = None 
 
         while True:
             intentos += 1
@@ -111,12 +97,6 @@ def jugar_toques_y_famas():
                 print("------------------------------\n")
                 break
 
-            # Si hay límite de intentos, verificarlo
-            if max_intentos is not None and intentos >= max_intentos:
-                print("Se alcanzó el número máximo de intentos.")
-                print(f"El número secreto era: {numero_secreto}\n")
-                break
-
         # Preguntar si desea jugar otra vez
         while True:
             respuesta = input("¿Deseas jugar otra vez? (s/n): ").strip().lower()
@@ -131,6 +111,3 @@ def jugar_toques_y_famas():
 
 if __name__ == "__main__":
     jugar_toques_y_famas()
-
-
-#"PRUEBA DE CAMBIOS Y ACTUALIZACIÓN"
