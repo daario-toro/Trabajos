@@ -8,5 +8,5 @@ print("Rama nueva creada desde GitHub Dario")
 print("Rama nueva creada desde GitHub Dario")
 #texto agregado desde Visual Studio Codeprint("Otro cambio desde VS Code en la rama nueva")
 #>>>>>>> dario
-for i in range(1, 11):
+for i in range(1, 12):
     print(i)
